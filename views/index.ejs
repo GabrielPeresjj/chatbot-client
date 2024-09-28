@@ -1,0 +1,70 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <!-- Fonte Roboto -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="chat-header">
+      Assistente Virtual
+    </div>
+    <div id="chatbox">
+      <% mensagens.forEach(function(mensagem) { %>
+        <div class="message <%= mensagem.role %>">
+          <div class="message-content">
+            <p><%- mensagem.content %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+    <form action="/" method="POST" id="chat-form">
+      <input type="text" name="mensagem" placeholder="Digite sua mensagem" autocomplete="off" required>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <!-- Script para rolar o chat e lidar com eventos de foco e redimensionamento -->
+  <script>
+    function scrollToBottom() {
+      const chatbox = document.getElementById('chatbox');
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    // Chama a função ao carregar a página
+    window.onload = function() {
+      scrollToBottom();
+    };
+
+    // Adiciona um ouvinte de evento ao campo de entrada
+    const inputField = document.querySelector('input[name="mensagem"]');
+
+    inputField.addEventListener('focus', () => {
+      // Pequeno atraso para permitir que o teclado virtual apareça (em dispositivos móveis)
+      setTimeout(scrollToBottom, 300);
+    });
+
+    // Adiciona um ouvinte de evento para redimensionamento da janela
+    window.addEventListener('resize', () => {
+      // Pequeno atraso para garantir que o redimensionamento termine
+      setTimeout(scrollToBottom, 300);
+    });
+
+    // Opcional: Manter o foco no campo de entrada após o envio do formulário
+    const chatForm = document.getElementById('chat-form');
+    chatForm.addEventListener('submit', (e) => {
+      // Previne o comportamento padrão de perda de foco
+      setTimeout(() => {
+        inputField.focus();
+        scrollToBottom();
+      }, 100);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+[
+  {
+    "nome_completo": "Gabriel Peres",
+    "cnpj": "14934418000180",
+    "telefone": "1198765434",
+    "email": "gabriel@teste.com.br",
+    "meio_de_contato": "WhatsApp",
+    "periodo": "tarde"
+  },
+  {
+    "nome_completo": "Gabriel Peres",
+    "cnpj": "14934418000180",
+    "telefone": "1198765434",
+    "email": "teste@teste.com.br",
+    "meio_de_contato": "WhatsApp",
+    "periodo": "manhã"
+  },
+  {
+    "nome_completo": "Gabriel Bernardo",
+    "cnpj": "14934418000180",
+    "telefone": "11 953073346",
+    "email": "teste@get.com.br",
+    "meio_de_contato": "WhatsApp",
+    "periodo": "manhã"
+  }
+]
