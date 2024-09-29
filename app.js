@@ -9,7 +9,7 @@ const sanitizeHtml = require('sanitize-html');
 const { salvarDadosUsuario } = require('./data');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 // Configurar o EJS como motor de templates
 app.set('view engine', 'ejs');
